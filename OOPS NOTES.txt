@@ -1,0 +1,450 @@
+c++ and JAVA  are partial OOPS language.
+OOPS charc.-
+1)Class and object-
+2)Encapsulation is the process using which data and the methods or functions
+ operating on them are bundled together. By doing this, data is not easily 
+accessible to the outside world. In OOP we achieve encapsulation by making 
+data members as private and having public functions to access these data 
+members.
+3)Abstraction is the process of hiding irrelevant information from the user.
+ For Example, when we are driving the car, first we start the engine by 
+inserting a key. We are not aware of the process that goes on in the
+ background for starting the engine.
+
+Using abstraction in programming, we can hide unnecessary details 
+from the user. By using abstraction in our application, the end user
+ is not affected even if we change the internal implementation.
+4)Inheritance-Using inheritance,the object of one class can inherit or acquire the
+ properties of the object of another class. Inheritance provides
+ reusability of code.
+5)Polymorphism
+Polymorphism means many forms.
+Polymorphism is an important feature of OOP and is usually implemented 
+as operator overloading or function overloading. Operator overloading is 
+a process in which an operator behaves differently in different situations.
+ Similarly, in function overloading, the same function behaves differently
+ in different situations.
+
+OOPS ADVANTAGES-
+code reusability, flexibility, modularity,maintability, data and info hiding.
+
+Data Types-
+3 types-
+1)Primitive-
+These data types are built-in or predefined data types and can be used 
+directly by the user to declare variables. example: int, char, float, bool,
+ etc. Primitive data types available in C++ are: 
+Integer
+Character
+Boolean
+Floating Point
+Double Floating Point
+Valueless or Void
+Wide Character
+2)Derived Data Types:
+ The data types that are derived from the primitive or built-in datatypes
+ are referred to as Derived Data Types. These can be of four types namely: 
+Function
+Array
+Pointer
+Reference
+3)Abstract or User-Defined Data Types: These data types are defined by 
+the user itself. Like, as defining a class in C++ or a structure. 
+C++ provides the following user-defined datatypes: 
+Class
+Structure
+Union
+Enumeration
+Typedef defined DataType
+
+Structure -
+A structure is a user-defined data type in C/C++. A structure creates a 
+data type that can be used to group items of possibly different types into
+ a single type. 
+struct Point {
+    int x = 0; // It is Considered as Default Arguments and no Error is Raised
+    int y = 1;
+};
+ 
+int main()
+{
+    struct Point p1;
+ 
+    // Accessing members of point p1
+    // No value is Initialized then the default value is considered. ie x=0 and y=1;
+    cout << "x = " << p1.x << ", y = " << p1.y<<endl;
+   
+    // Initializing the value of y = 20;
+    p1.y = 20;
+    cout << "x = " << p1.x << ", y = " << p1.y;
+    return 0;
+}
+
+Constructor-
+1)default
+2)parameterized
+3)copy -The copy constructor in C++ is used to copy data of one object to 
+another.
+ public:
+
+    // initialize variables with parameterized constructor
+    Wall(double len, double hgt) {
+      length = len;
+      height = hgt;
+    }
+
+    // copy constructor with a Wall object as parameter
+    // copies data of the obj parameter
+    Wall(Wall &obj) {
+      length = obj.length;
+      height = obj.height;
+    }
+*Destructor-
+Destructor is an instance member function which is invoked automatically
+ whenever an object is going to be destroyed. Meaning, a destructor is the
+ last function that is going to be called before an object is destroyed.
+
+*Properties of Destructor:
+Destructor function is automatically invoked when the objects are destroyed.
+It cannot be declared static or const.
+The destructor does not have arguments.
+It has no return type not even void.
+An object of a class with a Destructor cannot become a member of the union.
+A destructor should be declared in the public section of the class.
+The programmer cannot access the address of destructor.
+
+ Demo(int n1, int n2) {
+      cout<<"Inside Constructor"<<endl;
+      num1 = n1;
+      num2 = n2;
+   }
+ ~Demo() {
+      cout<<"Inside Destructor";
+   }
+
+---------------------------------------------------------------
+Passing an object as a arguement in function-
+class s
+{
+    public:
+    int a;
+    s(int A)
+    {
+        a=A;
+    }
+    void fun()
+    {
+        cout<<a<<endl;
+    }
+};
+void f(s o)
+{
+    cout<<"The obj passed as arguement is "<<o.a<<endl;
+}
+int main() {
+	int x=10;
+	s obj=s(x);
+	f(obj);
+	return 0;
+}
+--------------------------------------------------------------------
+Operator Overloading-
+In C++, we can change the way operators work for user-defined types like
+ objects and structures. This is known as operator overloading.
+public:
+
+    // Constructor to initialize count to 5
+    Count() : value(5) {}
+
+    // Overload ++ when used as prefix
+    void operator ++ () {
+        ++value;
+    }
+
+    void display() {
+        cout << "Count: " << value << endl;
+    }
+Except few operators like sizeof(),typeid,Scope resolution (::),
+ Class member access operators (.(dot), .* (pointer to member operator)):
+------------------------------------------------------------------
+Inheritance-
+In C++, inheritance is a process in which one object acquires all the 
+properties and behaviors of its parent object automatically.
+ In such way, you can reuse, extend or modify the attributes and behaviors
+ which are defined in other class.
+
+Types Of Inheritance
+C++ supports five types of inheritance:
+Single inheritance
+Multiple inheritance
+Hierarchical inheritance
+Multilevel inheritance
+Hybrid inheritance
+------------------------------------------------------------------------
+Pointers in array-
+	int *ptr;
+	int arr[3]={1,2,3};
+	ptr=arr;
+	cout<<*(ptr);
+Pointers in function-
+void fun(int *a)
+{
+    *a=(*a)+1;
+}
+int main() {
+int x=10;
+int *ptr;
+ptr=&x;
+fun(ptr);
+cout<<*(ptr);
+	return 0;
+}
+----------------------------------------------------------------------
+Virtual Function-
+A virtual function is a member function which is declared within a base 
+class and is re-defined (overridden) by a derived class. When you refer 
+to a derived class object using a pointer or a reference to the base class,
+ you can call a virtual function for that object and execute the derived
+ class’s version of the function. 
+They are mainly used to achieve **Runtime polymorphism**
+Functions are declared with a virtual keyword in base class.
+The resolving of function call is done at runtime.
+
+class s
+{
+  public:
+  
+  virtual void fun()
+  {
+      cout<<"virtual fun called"<<endl;
+  }
+};
+class p:public s
+{
+  public:
+ void fun()
+  {
+      cout<<"Vrtual fun modified"<<endl;
+  }
+};
+int main() {
+p obj;
+obj.fun();
+	return 0;
+}
+------------------------------------------------------------------------
+Friend class-
+can access the private members and functions of other class.
+1)Friendship is not mutual. If class A is a friend of B, then B
+ doesn’t become a friend of A automatically.
+3) Friendship is not inherited 
+4) The concept of friends is not there in Java. 
+
+class b;
+class a
+{
+  private:
+  int x=1;
+  public:
+  friend class b;
+};
+class b
+{
+  public:
+  int y;
+  b(int c)
+  {
+      y=c;
+  }
+  void fun()
+  {class a ob;
+      cout<<(ob.x)+y<<endl;
+  }
+};
+int main() {
+	// your code goes here
+	b obj=b(1);
+	obj.fun();
+	return 0;
+}
+-----------------------------------------------------------------------
+Friend function-
+A friend function can access the private and protected data of a class. 
+We declare a friend function using the friend keyword inside the body of 
+the class.
+friend int addFive();
+
+class s
+{
+    private:
+    int x;
+    public:
+    void fun(int y)
+    {
+        x=y;
+    }
+    friend void f(s);
+    
+};
+void f(s t)
+{
+    cout<<(t.x)+2<<endl;
+}
+int main() {
+	// your code goes here
+	s o;
+	o.fun(23);
+	f(o);
+	return 0;
+}
+--------------------------------------------------------------------
+POLYMORPHISM-It is the ability of a message to be displayed in different 
+forms.
+2 types-
+1)compile time-achieved by operator and function overloading.
+a)function overloading-
+class s
+{
+  public:
+  
+  void fun()
+  {
+    cout<<"fun with no arg"<<endl;  
+  }
+  void fun(int x)
+  {
+      cout<<"fun with arg x = "<<x<<endl;
+  }
+  void fun(int x,int y)
+  {
+      cout<<"fun with args x and y  = "<<x<<" "<<y<<endl;
+  }
+  
+};
+int main() {
+	// your code goes here
+	s o;
+	o.fun();
+	o.fun(2);
+	o.fun(2,5);
+	return 0;
+}
+ b)operator overloading-here the same operator performs different function 
+than what it does normally. the ++ operator which is a unary operator con-
+catenates 2 strings.
+Complex(int r = 0, int i =0)  {real = r;   imag = i;}
+       
+    // This is automatically called when '+' is used with
+    // between two Complex objects
+    Complex operator + (Complex const &obj) {
+         Complex res;
+         res.real = real + obj.real;
+         res.imag = imag + obj.imag;
+         return res;
+    }
+
+2)runtime -achieved by virtual function
+------------------------------------------------------------------------
+default arguement in function-
+void fun(int x=10,int y=20);
+int main() {
+	// your code goes here
+	fun();
+	fun(20,20);
+	return 0;
+}
+void fun(int x,int y)
+{
+    cout<<x+y<<endl;
+}
+---------------------------------------------------------------------
+Exception Handling in C++
+Exceptions are run-time anomalies or abnormal conditions that a program 
+encounters during its execution. There are two types of exceptions: 
+a)Synchronous, b)Asynchronous
+
+try: represents a block of code that can throw an exception.
+catch: represents a block of code that is executed when a particular
+exception is thrown.
+throw: Used to throw an exception. Also used to list the exceptions that 
+a function throws, but doesn’t handle itself.
+
+	int x=-1;
+	try
+	{
+	    cout<<"Inside try"<<endl;
+	    if(x<0)
+	    throw x;
+	    else 
+	    cout<<x<<endl;
+	    
+	}
+	catch(int x)
+	{
+	    cout<<"Inside catch"<<endl;
+	    cout<<x<<endl;
+	}
+
+Catch all handler catches all types of exception.
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int x=-1;
+	try
+	{
+	    cout<<"Inside try"<<endl;
+	    
+	    throw x;
+	    
+	    
+	}
+	catch(...)//catches all types of exception thrown
+	{
+	    cout<<"Inside catch"<<endl;
+	    cout<<x<<endl;
+	}
+	return 0;
+}
+-----------------------------------------------------------
+Inline Function-
+C++ provides an inline functions to reduce the function call overhead. 
+Inline function is a function that is expanded in line when it is called. 
+When the inline function is called whole code of the inline function gets
+ inserted or substituted at the point of inline function call.
+ This substitution is performed by the C++ compiler at compile time.
+ Inline function may increase efficiency if it is small.
+---
+inline int Max(int x, int y) {
+   return (x > y)? x : y;
+}
+
+// Main function for the program
+int main() {
+   cout << "Max (20,10): " << Max(20,10) << endl;
+   cout << "Max (0,200): " << Max(0,200) << endl;
+   cout << "Max (100,1010): " << Max(100,1010) << endl;
+   
+   return 0;
+}
+----------------------------------------------------
+STL = Its a collections of template classes.
+provides acces to various algo, containers,iterrators etc.
+has 3 components-
+1)containers-used to store data.
+3 types-
+a)sequence cont.-are in linear sequence. 
+vector ,deque,list
+b)Associative-data stored in tree manner, sorted when taking i/p,direct acces 
+to any element by using keys
+set,map,multiset,multimap
+c)derieved-created from sequence cont.,no iterrators supported,supports, push,
+pop().
+stack,queue, priority queue
+
+2)algorithms
+sort(),reverse(),swap(),__gcd() etc.
+
+3)iterators-are pointers basically, used to iterate through elements
+types-i/p,o/p,forward,bidirectional,random etc.
